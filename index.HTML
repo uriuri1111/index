@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תגובות לפורים</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Varela Round', sans-serif;
+            direction: rtl;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        button {
+            background-color: purple;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #comments {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .comment {
+            background: #fff3cd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .comment strong {
+            color: purple;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="sister.jpg" alt="אחותי" class="profile-img">
+        <h1>ברוכים הבאים! השאירו תגובה לפורים 🎭</h1>
+        <input id="nameInput" type="text" placeholder="השם שלך">
+        <textarea id="commentInput" placeholder="כתבו כאן את תגובתכם..."></textarea>
+        <button onclick="addComment()">הוסף תגובה</button>
+        <div id="comments"></div>
+    </div>
+
+    <script>
+        function addComment() {
+            let nameInput = document.getElementById('nameInput').value.trim();
+            let commentInput = document.getElementById('commentInput').value.trim();
+            if (commentInput) {
+                let commentBox = document.createElement('div');
+                commentBox.className = 'comment';
+                commentBox.innerHTML = `<strong>${nameInput || 'אורח'}:</strong> ${commentInput}`;
+                document.getElementById('comments').appendChild(commentBox);
+                document.getElementById('nameInput').value = '';
+                document.getElementById('commentInput').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
